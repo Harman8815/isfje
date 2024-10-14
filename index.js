@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 4000;
 
 // Set view engine and static files
 app.set('view engine', 'ejs');
@@ -74,7 +74,6 @@ app.get('/profile', (req, res) => {
     res.render('profile', { about: 'about', services: 'services', home: 'home' });
 });
 
-app.listen(port, (err) => {
-    if (err) console.log(err);
-    else console.log('The website is hosted on http://localhost:8080');
-});
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
